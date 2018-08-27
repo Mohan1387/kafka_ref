@@ -1,0 +1,19 @@
+
+to View how many lines has been red by 
+
+
+# list all the topic in meta info stired in __consumer_offsets
+
+kafka-console-consumer --consumer.config myconfig \
+  --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" \
+  --bootstrap-server localhost:9092 \
+  --topic __consumer_offsets
+
+
+# to search for a specific topic "first_topic"
+kafka-console-consumer --consumer.config myconfig   --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter"   --bootstrap-server localhost:9092   --topic __consumer_offsets --from-beginning | grep first_topic
+
+
+[testid,first_topic,0]::[OffsetMetadata[5,NO_METADATA],CommitTime 1535378985548,ExpirationTime 1535465385548]
+[testid,first_topic,1]::[OffsetMetadata[4,NO_METADATA],CommitTime 1535378985548,ExpirationTime 1535465385548]
+[testid,first_topic,2]::[OffsetMetadata[5,NO_METADATA],CommitTime 1535378985548,ExpirationTime 1535465385548]
